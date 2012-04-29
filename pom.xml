@@ -6,11 +6,13 @@
         <artifactId>bertvanbrakel-parent</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <groupId>com.bertvanbrakel</groupId>
     <artifactId>bertvanbrakel-testserver</artifactId>
     <packaging>jar</packaging>
     <name>com.bertvanbrakel - Test Http Server</name>
     <description>A wrapper around jetty to make it easier to embed in projects for testing</description>
+    <properties>
+        <jetty.version>8.1.1.v20120215</jetty.version>
+    </properties>
     <dependencies>
           <dependency>
 			<groupId>com.bertvanbrakel</groupId>
@@ -21,7 +23,17 @@
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-servlet</artifactId>
-            <version>7.1.6.v20100715</version>
+            <version>${jetty.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-servlets</artifactId>
+            <version>${jetty.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>test-jetty-servlet</artifactId>
+            <version>${jetty.version}</version>
         </dependency>
         <dependency>
             <groupId>log4j</groupId>
