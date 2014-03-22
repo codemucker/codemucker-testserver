@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.codemucker.testserver.capturing;
+package org.codemucker.testserver.capturing;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.lang.builder.EqualsBuilder;

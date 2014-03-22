@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.codemucker.testserver.capturing;
+package org.codemucker.testserver.capturing;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -24,13 +24,12 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
-import org.codemucker.match.AList;
-import org.codemucker.match.AbstractNotNullMatcher;
-import org.codemucker.match.Description;
-import org.codemucker.match.MatchDiagnostics;
-import org.codemucker.match.Matcher;
-
-import com.codemucker.testserver.Server;
+import org.codemucker.jmatch.AList;
+import org.codemucker.jmatch.AbstractNotNullMatcher;
+import org.codemucker.jmatch.Description;
+import org.codemucker.jmatch.MatchDiagnostics;
+import org.codemucker.jmatch.Matcher;
+import org.codemucker.testserver.Server;
 
 //TODO:the bulder methods currently modify the captured request. Use the Property matcher!
 

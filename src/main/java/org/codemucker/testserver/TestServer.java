@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.codemucker.testserver;
+package org.codemucker.testserver;
 
 import static org.codemucker.lang.Check.checkNotBlank;
 import static org.codemucker.lang.Check.checkNotEmpty;
@@ -40,7 +40,7 @@ import org.eclipse.jetty.servlet.ServletHolder;
  * @author Bert van Brakel
  *
  */
-public class TestServer implements com.codemucker.testserver.Server {
+public class TestServer implements org.codemucker.testserver.Server {
 
 	private static final Logger LOG = Logger.getLogger(TestServer.class);
 

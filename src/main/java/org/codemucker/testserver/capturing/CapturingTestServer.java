@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.codemucker.testserver.capturing;
+package org.codemucker.testserver.capturing;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,9 +28,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.codemucker.testserver.Server;
-import com.codemucker.testserver.TestServer;
-import com.codemucker.testserver.TestServlet;
+import org.codemucker.testserver.Server;
+import org.codemucker.testserver.TestServer;
+import org.codemucker.testserver.TestServlet;
 /**
  * A MockServer which captures all requests for later analysis
  * of correct client behaviour

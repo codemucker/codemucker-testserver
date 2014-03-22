@@ -13,25 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.codemucker.testserver.capturing;
+package org.codemucker.testserver.capturing;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
-import org.codemucker.match.AbstractNotNullMatcher;
-import org.codemucker.match.Description;
-import org.codemucker.match.MatchDiagnostics;
-import org.codemucker.match.Matcher;
+import org.codemucker.jmatch.AbstractMatcher;
+import org.codemucker.jmatch.Description;
+import org.codemucker.jmatch.MatchDiagnostics;
+import org.codemucker.jmatch.Matcher;
 
-public class ACapturedHeader extends AbstractNotNullMatcher<CapturedHeader> {
-    private final CapturedHeader expect;
+public class ACapturedCookie extends AbstractMatcher<CapturedCookie> {
+    private final CapturedCookie expect;
 
-    public ACapturedHeader(final CapturedHeader expect) {
+    public ACapturedCookie(final CapturedCookie expect) {
         this.expect = expect;
     }
 
     @Override
-    public boolean matchesSafely(final CapturedHeader actual, MatchDiagnostics diag) {
+    public boolean matchesSafely(final CapturedCookie actual, MatchDiagnostics diag) {
         return EqualsBuilder.reflectionEquals(expect, actual);
     }
 
@@ -40,15 +40,15 @@ public class ACapturedHeader extends AbstractNotNullMatcher<CapturedHeader> {
         desc.value("expect",ToStringBuilder.reflectionToString(expect,ToStringStyle.SHORT_PREFIX_STYLE));
     }
 
-
     /**
      * Convenience fluent API to create this matcher
      *
-     * @param header
+     *
+     * @param cookie
      * @return
      */
-    public static Matcher<? super CapturedHeader> equalTo(final CapturedHeader expect) {
-        return new ACapturedHeader(expect);
+    public static Matcher<? super CapturedCookie> equalTo(
+            final CapturedCookie expect) {
+        return new ACapturedCookie(expect);
     }
-    
 }

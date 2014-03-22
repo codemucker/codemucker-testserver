@@ -13,42 +13,42 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.codemucker.testserver.capturing;
+package org.codemucker.testserver.capturing;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
-import org.codemucker.match.AbstractMatcher;
-import org.codemucker.match.Description;
-import org.codemucker.match.MatchDiagnostics;
-import org.codemucker.match.Matcher;
+import org.codemucker.jmatch.AbstractNotNullMatcher;
+import org.codemucker.jmatch.Description;
+import org.codemucker.jmatch.MatchDiagnostics;
+import org.codemucker.jmatch.Matcher;
 
-public class ACapturedFileItem extends AbstractMatcher<CapturedFileItem> {
-	
-    private final CapturedFileItem expect;
+public class ACapturedHeader extends AbstractNotNullMatcher<CapturedHeader> {
+    private final CapturedHeader expect;
 
-    public ACapturedFileItem(final CapturedFileItem expect) {
+    public ACapturedHeader(final CapturedHeader expect) {
         this.expect = expect;
     }
 
     @Override
-    public boolean matchesSafely(final CapturedFileItem actual, MatchDiagnostics diag) {
+    public boolean matchesSafely(final CapturedHeader actual, MatchDiagnostics diag) {
         return EqualsBuilder.reflectionEquals(expect, actual);
     }
 
     @Override
     public void describeTo(final Description desc) {
-        desc.value("expect", ToStringBuilder.reflectionToString(expect,ToStringStyle.SHORT_PREFIX_STYLE));
+        desc.value("expect",ToStringBuilder.reflectionToString(expect,ToStringStyle.SHORT_PREFIX_STYLE));
     }
+
 
     /**
      * Convenience fluent API to create this matcher
      *
-     *
-     * @param cookie
+     * @param header
      * @return
      */
-    public static Matcher<? super CapturedFileItem> equalTo(final CapturedFileItem expect) {
-        return new ACapturedFileItem(expect);
+    public static Matcher<? super CapturedHeader> equalTo(final CapturedHeader expect) {
+        return new ACapturedHeader(expect);
     }
+    
 }

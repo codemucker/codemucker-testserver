@@ -13,31 +13,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.codemucker.testserver.capturing;
+package org.codemucker.testserver.capturing;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
-import org.codemucker.match.AbstractMatcher;
-import org.codemucker.match.Description;
-import org.codemucker.match.MatchDiagnostics;
-import org.codemucker.match.Matcher;
+import org.codemucker.jmatch.AbstractMatcher;
+import org.codemucker.jmatch.Description;
+import org.codemucker.jmatch.MatchDiagnostics;
+import org.codemucker.jmatch.Matcher;
 
-public class ACapturedCookie extends AbstractMatcher<CapturedCookie> {
-    private final CapturedCookie expect;
+public class ACapturedFileItem extends AbstractMatcher<CapturedFileItem> {
+	
+    private final CapturedFileItem expect;
 
-    public ACapturedCookie(final CapturedCookie expect) {
+    public ACapturedFileItem(final CapturedFileItem expect) {
         this.expect = expect;
     }
 
     @Override
-    public boolean matchesSafely(final CapturedCookie actual, MatchDiagnostics diag) {
+    public boolean matchesSafely(final CapturedFileItem actual, MatchDiagnostics diag) {
         return EqualsBuilder.reflectionEquals(expect, actual);
     }
 
     @Override
     public void describeTo(final Description desc) {
-        desc.value("expect",ToStringBuilder.reflectionToString(expect,ToStringStyle.SHORT_PREFIX_STYLE));
+        desc.value("expect", ToStringBuilder.reflectionToString(expect,ToStringStyle.SHORT_PREFIX_STYLE));
     }
 
     /**
@@ -47,8 +48,7 @@ public class ACapturedCookie extends AbstractMatcher<CapturedCookie> {
      * @param cookie
      * @return
      */
-    public static Matcher<? super CapturedCookie> equalTo(
-            final CapturedCookie expect) {
-        return new ACapturedCookie(expect);
+    public static Matcher<? super CapturedFileItem> equalTo(final CapturedFileItem expect) {
+        return new ACapturedFileItem(expect);
     }
 }

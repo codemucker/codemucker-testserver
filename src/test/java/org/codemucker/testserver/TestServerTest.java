@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.codemucker.testserver;
+package org.codemucker.testserver;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -31,12 +31,11 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.codemucker.testserver.TestServer;
+import org.codemucker.testserver.TestServlet;
+import org.codemucker.testserver.capturing.CapturedRequest;
 import org.junit.After;
 import org.junit.Test;
-
-import com.codemucker.testserver.TestServer;
-import com.codemucker.testserver.TestServlet;
-import com.codemucker.testserver.capturing.CapturedRequest;
 
 public class TestServerTest {
 

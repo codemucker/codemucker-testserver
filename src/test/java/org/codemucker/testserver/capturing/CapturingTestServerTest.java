@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.codemucker.testserver.capturing;
+package org.codemucker.testserver.capturing;
 import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
@@ -27,12 +27,14 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.codemucker.match.AList;
-import org.codemucker.match.Expect;
+import org.codemucker.jmatch.AList;
+import org.codemucker.jmatch.Expect;
+import org.codemucker.testserver.TestServlet;
+import org.codemucker.testserver.capturing.ACapturedRequest;
+import org.codemucker.testserver.capturing.CapturedRequest;
+import org.codemucker.testserver.capturing.CapturingTestServer;
 import org.junit.After;
 import org.junit.Test;
-
-import com.codemucker.testserver.TestServlet;
 
 
 public class CapturingTestServerTest {
