@@ -13,32 +13,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.bertvanbrakel.testserver.capturing;
+package com.codemucker.testserver.capturing;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
-import org.hamcrest.Description;
-import org.hamcrest.Matcher;
-import org.hamcrest.TypeSafeMatcher;
+import org.codemucker.match.AbstractMatcher;
+import org.codemucker.match.Description;
+import org.codemucker.match.MatchDiagnostics;
+import org.codemucker.match.Matcher;
 
-public class CapturedCookieIsEqual extends
-        TypeSafeMatcher<CapturedCookie> {
-    private final CapturedCookie expect;
+public class ACapturedFileItem extends AbstractMatcher<CapturedFileItem> {
+	
+    private final CapturedFileItem expect;
 
-    public CapturedCookieIsEqual(final CapturedCookie expect) {
+    public ACapturedFileItem(final CapturedFileItem expect) {
         this.expect = expect;
     }
 
     @Override
-    public boolean matchesSafely(final CapturedCookie actual) {
+    public boolean matchesSafely(final CapturedFileItem actual, MatchDiagnostics diag) {
         return EqualsBuilder.reflectionEquals(expect, actual);
     }
 
     @Override
     public void describeTo(final Description desc) {
-        desc.appendText(ToStringBuilder.reflectionToString(expect,
-                ToStringStyle.SHORT_PREFIX_STYLE));
+        desc.value("expect", ToStringBuilder.reflectionToString(expect,ToStringStyle.SHORT_PREFIX_STYLE));
     }
 
     /**
@@ -48,8 +48,7 @@ public class CapturedCookieIsEqual extends
      * @param cookie
      * @return
      */
-    public static Matcher<? super CapturedCookie> equalTo(
-            final CapturedCookie expect) {
-        return new CapturedCookieIsEqual(expect);
+    public static Matcher<? super CapturedFileItem> equalTo(final CapturedFileItem expect) {
+        return new ACapturedFileItem(expect);
     }
 }

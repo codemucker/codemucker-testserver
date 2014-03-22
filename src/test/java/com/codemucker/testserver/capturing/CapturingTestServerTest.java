@@ -13,12 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.bertvanbrakel.testserver.capturing;
-import static com.bertvanbrakel.lang.matcher.IsCollectionOf.containsOnlyItem;
-import static com.bertvanbrakel.lang.matcher.IsCollectionOf.containsOnlyItemsInOrder;
-import static com.bertvanbrakel.testserver.capturing.CapturedRequestIsEqual.equalTo;
-import static junit.framework.Assert.assertEquals;
-import static org.hamcrest.MatcherAssert.assertThat;
+package com.codemucker.testserver.capturing;
+import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
 
@@ -31,10 +27,12 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.codemucker.match.AList;
+import org.codemucker.match.Expect;
 import org.junit.After;
 import org.junit.Test;
 
-import com.bertvanbrakel.testserver.TestServlet;
+import com.codemucker.testserver.TestServlet;
 
 
 public class CapturingTestServerTest {
@@ -96,8 +94,13 @@ public class CapturingTestServerTest {
 		expect.setParamValues("foo", "bar");
 		expect.setParamValues("alice", "bob");
 
-		assertThat( server.getAllRequests(), containsOnlyItem(equalTo(expect)));
-        assertThat( server.getRequestsByServletPath("/my/path/*"), containsOnlyItem(equalTo(expect)));
+		Expect
+			.that(server.getAllRequests())
+			.is(AList.withOnly(ACapturedRequest.equalTo(expect)));
+		Expect
+			.that(server.getRequestsByServletPath("/my/path/*"))
+			.is(AList.withOnly(ACapturedRequest.equalTo(expect)));
+		
 	}
 
 	/**
@@ -179,12 +182,19 @@ public class CapturingTestServerTest {
 		req2.characterEncoding = null;
 
 		//check the server retrieval methods work
-	    assertThat( server.getAllRequests(), containsOnlyItemsInOrder(equalTo(req1,req2)));
-	    assertThat( server.getRequestsByServletPath("/my/first/path"), containsOnlyItem(equalTo(req1)));
-	    assertThat( server.getRequestsByServletPath("/my/second/path"), containsOnlyItem(equalTo(req2)));
-
+		
+		Expect
+			.that(server.getAllRequests())
+			.is(AList.inAnyOrder().withOnly(ACapturedRequest.equalTo(req1)).and(ACapturedRequest.equalTo(req2)));
+		Expect
+			.that(server.getRequestsByServletPath("/my/first/path"))
+			.is(AList.withOnly(ACapturedRequest.equalTo(req1)));
+		Expect
+			.that(server.getRequestsByServletPath("/my/second/path"))
+			.is(AList.withOnly(ACapturedRequest.equalTo(req2)));
+	
 	}
 
-
+	
 
 }

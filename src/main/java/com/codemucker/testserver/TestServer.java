@@ -13,9 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.bertvanbrakel.testserver;
+package com.codemucker.testserver;
 
-import static com.bertvanbrakel.lang.Check.*;
+import static org.codemucker.lang.Check.checkNotBlank;
+import static org.codemucker.lang.Check.checkNotEmpty;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -39,7 +40,7 @@ import org.eclipse.jetty.servlet.ServletHolder;
  * @author Bert van Brakel
  *
  */
-public class TestServer implements com.bertvanbrakel.testserver.Server {
+public class TestServer implements com.codemucker.testserver.Server {
 
 	private static final Logger LOG = Logger.getLogger(TestServer.class);
 

@@ -1,6 +1,27 @@
-.settings/
-bin/
+# maven
 target/
+
+# maven release plugin
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.next
+release.properties
+
+# other editors
+~$*
+*~
+
+# random
+
+*.log
+out.txt
+
+# eclipse
+.bin/
+.settings/
 .project
 .classpath
-.svn/
+
+# svn
+.svn
+
