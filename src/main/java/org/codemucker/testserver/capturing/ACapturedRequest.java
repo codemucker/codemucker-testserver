@@ -100,13 +100,13 @@ public class ACapturedRequest extends AbstractNotNullMatcher<CapturedRequest> {
                 "cookies", "headers" })) {
             return false;
         }
-        if(!diag.TryMatch(actual.getCookies(), cookieMatchers)){
+        if(!diag.tryMatch(this,actual.getCookies(), cookieMatchers)){
         	return false;
         }
-        if(!diag.TryMatch(actual.getHeaders(), headerMatchers)){
+        if(!diag.tryMatch(this,actual.getHeaders(), headerMatchers)){
         	return false;
         }
-        if(!diag.TryMatch(actual.getMultiPartFileItems(), fileItemMatchers)){
+        if(!diag.tryMatch(this,actual.getMultiPartFileItems(), fileItemMatchers)){
         	return false;
         }
         return true;
