@@ -15,9 +15,9 @@
  */
 package org.codemucker.testserver;
 
+import static junitx.framework.StringAssert.assertContains;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static junitx.framework.StringAssert.assertContains;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -30,9 +30,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.codemucker.testserver.TestServer;
-import org.codemucker.testserver.TestServlet;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.codemucker.testserver.capturing.CapturedRequest;
 import org.junit.After;
 import org.junit.Test;
@@ -77,7 +75,7 @@ public class TestServerTest {
 		final String url = "http://" + server.getHost() + ":" + server.getHttpPort() + "/my/test/path?x=" + paramX;
 
 		//check we can hit the servlet, that it's run only once, and that we get the params passed to it
-		final HttpClient client = new DefaultHttpClient();
+		final HttpClient client = HttpClientBuilder.create().build();
 		final HttpGet get = new HttpGet(url);
 		final HttpResponse resp = client.execute(get);
 
@@ -106,7 +104,7 @@ public class TestServerTest {
         final String url = "http://" + server.getHost() + ":" + server.getHttpPort() + "/my/test/path2";
 
         //check we can hit the servlet
-        final HttpClient client = new DefaultHttpClient();
+        final HttpClient client = HttpClientBuilder.create().build();
         final HttpGet get = new HttpGet(url);
         final HttpResponse resp = client.execute(get);
 

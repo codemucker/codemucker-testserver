@@ -20,6 +20,7 @@ import static org.codemucker.lang.Check.checkNotEmpty;
 
 import java.io.IOException;
 import java.net.InetAddress;
+import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.UnknownHostException;
 import java.util.LinkedHashMap;
@@ -30,7 +31,6 @@ import javax.servlet.Servlet;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.server.nio.SelectChannelConnector;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 /**
@@ -63,20 +63,13 @@ public class TestServer implements org.codemucker.testserver.Server {
     public void start() throws Exception {
 		LOG.debug("starting jetty mock server");
 		checkNotRunning();
-		server = new Server();
 		if (httpPort <= 0) {
-			httpPort = findFreePort(host);
-		}
-		// set the channel we are listenting through
-		final SelectChannelConnector con = new SelectChannelConnector();
-		con.setPort(httpPort);
-		con.setHost(host);
-		server.addConnector(con);
+            httpPort = findFreePort(host);
+        }
+		server = new Server(new InetSocketAddress(host, httpPort));
 		// set up the handler which will matching incoming requests to
 		// configured paths
-		final ServletContextHandler context = new ServletContextHandler(
-				ServletContextHandler.NO_SESSIONS
-						| ServletContextHandler.NO_SECURITY);
+		final ServletContextHandler context = new ServletContextHandler(ServletContextHandler.NO_SESSIONS| ServletContextHandler.NO_SECURITY);
 		context.setContextPath("/");
 		server.setHandler(context);
 
