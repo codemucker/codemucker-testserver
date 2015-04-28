@@ -10,7 +10,7 @@
 	</parent>
 	<artifactId>codemucker-testserver</artifactId>
 	<packaging>jar</packaging>
-	<name>org.codemucker - Http Testing Server</name>
+	<name>org.codemucker - TestServer (Http Testing Server)</name>
 	<description>A wrapper around jetty to make it easier to embed in projects for testing</description>
 	<dependencies>
 		<dependency>
