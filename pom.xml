@@ -12,6 +12,9 @@
 	<packaging>jar</packaging>
 	<name>org.codemucker - TestServer (Http Testing Server)</name>
 	<description>A wrapper around jetty to make it easier to embed in projects for testing</description>
+	   <scm>
+       <developerConnection>scm:git:git@github.com/codemucker/codemucker-testserver.git</developerConnection>
+    </scm>
 	<dependencies>
 		<dependency>
 			<groupId>org.codemucker</groupId>
